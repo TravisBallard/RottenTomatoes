@@ -27,17 +27,19 @@
 		</header>
 
 		<div class="container">
-			<?php foreach( $rotten->get_movies_in_box_office() as $movie ) {
+			<?php $movies = $rotten->get_movies_in_box_office(); ?>
+
+			<?php foreach( $movies as $movie ) {
 				$movie = (object)$movie;
 				$classes = array( 'bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7' );
 				?>
 
 				<div class="movie <?php echo $classes[ $x % count( $classes ) ]; ?>">
 					<div class="poster">
-						<img src="<?php echo $movie->posters['profile']; ?>" alt="<?php printf( '%s (%d)', $movie->title, $movie->year ); ?>">
+						<img src="<?php echo Rotten::strip_flixster( $movie->posters['profile'] ); ?>" alt="<?php printf( '%s (%d)', $movie->title, $movie->year ); ?>">
 					</div>
 					<div class="info">
-						<h2><?php echo $movie->title; ?></h2>
+						<h2><?php printf( '%s (%d)', $movie->title, $movie->year ); ?></h2>
 						<p><?php echo $movie->synopsis; ?></p>
 					</div>
 				</div>
