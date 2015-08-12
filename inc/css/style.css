@@ -5,6 +5,7 @@
 
 body {
 	font-size:62.5%;
+	font-family:'Roboto', arial, sans-serif;
 }
 
 .container {
@@ -29,39 +30,112 @@ header h1 {
 }
 
 .movie {
-	padding:10px;
-	/*border:5px solid #ccc;*/
 	width:20%;
-	/*display:flex;*/
-	flex-direction: row;
-	flex-wrap: wrap;
 	box-sizing:border-box;
+	height:450px;
+	background-size:cover;
+	background-position:center center;
+	overflow:hidden;
+	position:relative;
+	border:20px solid #fff;
+	cursor:pointer;
 }
 
-.movie .poster {
-	width:100%;
-}
-
-.movie .poster img {
-	display:block;
-	width:100%;
-	max-width:100%;
-	margin: 0 auto;
-	height:auto;
-}
-
-.movie .info {
-	width:80%;
-	padding-left:10px;
-	box-sizing:border-box;
-	display:none;
-}
-
-.movie .info h2 {
-	margin-bottom:5px;
+.movie h2 {
+	color:#000;
+	text-align:center;
 	font-size:1.8em;
+	padding:10px;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	box-sizing:border-box;
+	z-index:15;
 }
 
-.movie .info p {
-	font-size:1.4em;
+.overlay {
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:rgba(0,0,0,.45);
+	z-index:5;
 }
+
+p.more-info {
+	position:absolute;
+	text-align:center;
+	top:50%;
+	transform:translateY(-50%);
+	z-index:10;
+	width:100%;
+	box-sizing: border-box;
+}
+
+p.more-info a {
+	display:none;
+	text-decoration: none;
+	height:87px;
+	width:75px;
+	direction:ltr;
+	text-indent:-9999px;
+	overflow:hidden;
+	background:transparent url(../../i/detail.png) 0 0 no-repeat;
+	margin:0 auto;
+}
+
+.movie:hover {
+	border:none;
+}
+
+.movie:hover .overlay,
+.movie:hover p.more-info a {
+	display:block;
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+.movie:hover p.more-info a {
+	/*display:none;*/
+	-webkit-animation-name: tada;
+	animation-name: tada;
+}
+
+@media screen and (max-width:1400px){
+	.movie { height:400px; }
+}
+
+@media screen and (max-width:1000px){
+	.movie { height:300px; }
+}
+
+@media screen and (max-width:800px){
+	.movie {
+		height:300px;
+		width:25%;
+	}
+}
+
+@media screen and (max-width:720px){
+	.movie {
+		height:300px;
+		width:33.333333%;
+	}
+}
+
+@media screen and (max-width:640px){
+	.movie {
+		height:500px;
+		width:50%;
+	}
+}
+
+
+
+
+
+
+
+
