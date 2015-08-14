@@ -1,5 +1,4 @@
 <?php
-	global $movie;
 	require_once( 'inc/lib/rotten.class.php' );
 	$rotten = new Rotten();
 
@@ -16,7 +15,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 
-		<title>RottenTomatoes API Example</title>
+		<title>Rotten.</title>
 
 		<link rel="stylesheet" media="screen" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,700,300|Montserrat:400,700">
 		<link rel="stylesheet" media="screen" type="text/css" href="inc/css/animate.css" />
