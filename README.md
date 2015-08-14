@@ -27,4 +27,4 @@ each movie directly to the DOM at runtime.
 - Hashtag state tracking to allow users to utilize the back and forward buttons in their browsers.
 
 ## Demo
-http://movies.travisballard.com
+[http://movies.travisballard.com](http://movies.travisballard.com)
