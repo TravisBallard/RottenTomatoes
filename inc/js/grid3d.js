@@ -93,17 +93,15 @@
 				// simulating loading...
 				setTimeout( function() {
 					// hide loader
-					if( classie.hasClass( self.loader, 'show' ) ) {
-						classie.removeClass(self.loader, 'show');
-					}
+					$(self.loader).removeClass('show');
 					// in the end of the transition set class "show" to respective content item
-					classie.addClass( self.contentItems[ pos ], 'show' );
+					$(self.contentItems[ pos ]).addClass( 'show');
 				}, 1000 );
 				// show content area
-				classie.addClass( self.contentEl, 'show' );
+				$(self.contentEl).addClass('show');
 				// show loader
-				classie.addClass( self.loader, 'show' );
-				classie.addClass( document.body, 'noscroll' );
+				$(self.loader).addClass('show');
+				$(document.body).addClass('noscroll');
 				self.isAnimating = false;
 			};
 
@@ -129,9 +127,9 @@
 		// and animate it
 		var animFn = function() {
 			// give class "active" to current grid item (hides it)
-			classie.addClass( currentItem, 'active' );
+			$(currentItem).addClass('active');
 			// add class "view-full" to the grid-wrap
-			classie.addClass( self.gridWrap, 'view-full' );
+			$(self.gridWrap).addClass('view-full');
 			// set width/height/left/top of placeholder
 			self._resizePlaceholder();
 			var onEndTransitionFn = function( ev ) {
@@ -151,39 +149,34 @@
 			contentItem = this.el.querySelector( 'div.content > .show' ),
 			currentItem = this.gridItems[ this.contentItems.indexOf( contentItem ) ];
 
-		if( classie.hasClass(contentItem, 'show') ) {
-			classie.removeClass(contentItem, 'show');
-		}
-		if( classie.hasClass(this.contentEl, 'show') ) {
-			classie.removeClass(this.contentEl, 'show');
-		}
+		$(contentItem).removeClass('show');
+		$(this.contentEl).removeClass('show');
 
 		window.location.hash = '';
 
 		// without the timeout there seems to be some problem in firefox
-		setTimeout( function() { if( classie.hasClass( document.body, 'noscroll' ) ){ classie.removeClass( document.body, 'noscroll' ); } }, 25 );
+		setTimeout( function() { $(document.body).removeClass('noscroll'); }, 25 );
 		// that's it for no support..
 		if( !this.support ) return false;
 
-		if( classie.hasClass( this.gridWrap, 'view-full' ) ) {
-			classie.removeClass(this.gridWrap, 'view-full');
-		}
+		$(this.gridWrap).removeClass('view-full');
 
 		// reset placeholder style values
-		this.placeholder.style.left = currentItem.offsetLeft + 'px';
-		this.placeholder.style.top = currentItem.offsetTop + 'px';
+		if( typeof currentItem !== 'undefined' ) {
+			this.placeholder.style.left = currentItem.offsetLeft + 'px';
+			this.placeholder.style.top = currentItem.offsetTop + 'px';
+		}
 		this.placeholder.style.width = this.itemSize.width + 'px';
 		this.placeholder.style.height = this.itemSize.height + 'px';
+
 
 		var onEndPlaceholderTransFn = function( ev ) {
 			this.removeEventListener( transEndEventName, onEndPlaceholderTransFn );
 			// remove placeholder from grid
-			self.placeholder.parentNode.removeChild( self.placeholder );
+			if( null !== self.placeholder.parentNode )
+				self.placeholder.parentNode.removeChild( self.placeholder );
 			// show grid item again
-
-			if( classie.hasClass( currentItem, 'active' ) ){
-				classie.removeClass(currentItem, 'active');
-			}
+			$(currentItem).removeClass('active');
 		};
 		this.placeholder.addEventListener( transEndEventName, onEndPlaceholderTransFn );
 	}

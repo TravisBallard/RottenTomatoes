@@ -25,7 +25,6 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="inc/js/modernizr.custom.js"></script>
 		<script src="inc/js/helper.js"></script>
-		<script src="inc/js/classie.js"></script>
 		<script src="inc/js/grid3d.js"></script>
 		<script src="inc/js/script.js"></script>
 	</head>
