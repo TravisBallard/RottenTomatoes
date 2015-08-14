@@ -24,7 +24,5 @@ each movie directly to the DOM at runtime.
 
 - I would also like to add in a search form that sends an ajax request to allow users to search for movies and then rebuild the page.
 
-- Hashtag state tracking to allow users to utilize the back and forward buttons in their browsers.
-
 ## Demo
 [http://movies.travisballard.com](http://movies.travisballard.com)

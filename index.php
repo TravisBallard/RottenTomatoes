@@ -49,7 +49,12 @@
 						}
 
 						?>
-						<div id="m_<?php echo $movie->id; ?>" class="movie" style="background-image: url(<?php echo $thumb ?>);">
+						<div
+							id="m_<?php echo $movie->id; ?>"
+							class="movie"
+							data-hash="<?php echo urlencode( $movie->title ); ?>"
+							style="background-image: url(<?php echo $thumb ?>);"
+						>
 							<h2 class="<?php echo $classes[ $x % count( $classes ) ]; ?>">
 								<?php printf( '%s (%d)', $movie->title, $movie->year ); ?>
 							</h2>

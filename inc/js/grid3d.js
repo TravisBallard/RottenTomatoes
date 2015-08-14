@@ -93,7 +93,9 @@
 				// simulating loading...
 				setTimeout( function() {
 					// hide loader
-					classie.removeClass( self.loader, 'show' );
+					if( classie.hasClass( self.loader, 'show' ) ) {
+						classie.removeClass(self.loader, 'show');
+					}
 					// in the end of the transition set class "show" to respective content item
 					classie.addClass( self.contentItems[ pos ], 'show' );
 				}, 1000 );
@@ -140,6 +142,7 @@
 			self.placeholder.addEventListener( transEndEventName, onEndTransitionFn );
 		};
 
+		window.location.hash = $(self.gridItems[ pos ]).data('hash');
 		setTimeout( animFn, 25 );
 	};
 
@@ -147,15 +150,24 @@
 		var self = this,
 			contentItem = this.el.querySelector( 'div.content > .show' ),
 			currentItem = this.gridItems[ this.contentItems.indexOf( contentItem ) ];
-		
-		classie.removeClass( contentItem, 'show' );
-		classie.removeClass( this.contentEl, 'show' );
+
+		if( classie.hasClass(contentItem, 'show') ) {
+			classie.removeClass(contentItem, 'show');
+		}
+		if( classie.hasClass(this.contentEl, 'show') ) {
+			classie.removeClass(this.contentEl, 'show');
+		}
+
+		window.location.hash = '';
+
 		// without the timeout there seems to be some problem in firefox
-		setTimeout( function() { classie.removeClass( document.body, 'noscroll' ); }, 25 );
+		setTimeout( function() { if( classie.hasClass( document.body, 'noscroll' ) ){ classie.removeClass( document.body, 'noscroll' ); } }, 25 );
 		// that's it for no support..
 		if( !this.support ) return false;
 
-		classie.removeClass( this.gridWrap, 'view-full' );
+		if( classie.hasClass( this.gridWrap, 'view-full' ) ) {
+			classie.removeClass(this.gridWrap, 'view-full');
+		}
 
 		// reset placeholder style values
 		this.placeholder.style.left = currentItem.offsetLeft + 'px';
@@ -168,7 +180,10 @@
 			// remove placeholder from grid
 			self.placeholder.parentNode.removeChild( self.placeholder );
 			// show grid item again
-			classie.removeClass( currentItem, 'active' );
+
+			if( classie.hasClass( currentItem, 'active' ) ){
+				classie.removeClass(currentItem, 'active');
+			}
 		};
 		this.placeholder.addEventListener( transEndEventName, onEndPlaceholderTransFn );
 	}
