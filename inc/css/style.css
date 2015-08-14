@@ -416,13 +416,13 @@ p.more-info a {
 
 @media screen and (max-width:1000px){
 	.movie,
-	.placeholder { height:300px; }
+	.placeholder { height:350px; }
 }
 
 @media screen and (max-width:800px){
 	.movie,
 	.placeholder {
-		height:300px;
+		height:325px;
 		width:25%;
 	}
 }
@@ -433,12 +433,20 @@ p.more-info a {
 		height:300px;
 		width:33.333333%;
 	}
+	.detail-image,
+	.detail-info {
+		width:100%;
+	}
+
+	.detail-image {
+		padding-right:40px;
+	}
 }
 
 @media screen and (max-width:640px){
 	.movie,
 	.placeholder {
-		height:500px;
+		height:225px;
 		width:50%;
 	}
 }
