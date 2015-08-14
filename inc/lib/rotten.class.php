@@ -85,4 +85,29 @@
 			return preg_replace( '/resizing.flixster.com\/.*?\/.*?\//sim', '', $thumb_url );
 		}
 
+		/**
+		 * Convert the runtime minutes to a "n Hour(s) n Minute(s)"
+		 *
+		 * @param $mins
+		 * @return string
+		 */
+		public static function format_runtime($mins)
+		{
+			$hours = floor( intval( $mins ) / 60 );
+			$hours_label = $hours > 1 ? 'Hours' : 'Hour';
+
+			$minutes = ( $mins % 60 );
+			$minutes_label = $minutes > 1 ? 'Minutes' : 'Minute';
+
+			return sprintf(
+				'%s %s',
+				$hours == 0 ?
+					'' :
+					sprintf( '%d %s', $hours, $hours_label ),
+
+				$minutes == 0 ?
+					'' :
+					sprintf( '%d %s', $minutes, $minutes_label ) );
+		}
+
 	}
